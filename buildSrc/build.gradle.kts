@@ -2,32 +2,25 @@ plugins {
     `kotlin-dsl`
 }
 
-dependencies {
-    implementation(libs.android.gradle)
-    implementation(libs.kotlin.gradle)
-    implementation(libs.googleservices.gradle)
-    implementation(libs.hilt.gradle)
+repositories {
+    mavenCentral()
+    google()
+    gradlePluginPortal()
 }
 
-configurations {
-    implementation {
-        resolutionStrategy.failOnVersionConflict()
-    }
+dependencies {
+    implementation("com.android.tools.build:gradle:7.4.0-alpha09")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10")
 }
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
-    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
 
 tasks {
     compileKotlin {
         kotlinOptions.jvmTarget = JavaVersion.VERSION_11.toString()
         kotlinOptions.freeCompilerArgs = listOf("-opt-in=kotlin.RequiresOptIn")
-    }
-    test {
-        testLogging.showCauses = true
-        testLogging.showExceptions = true
-        testLogging.showStackTraces = true
     }
 }

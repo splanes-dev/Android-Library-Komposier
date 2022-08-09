@@ -1,18 +1,19 @@
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 enableFeaturePreview("VERSION_CATALOGS")
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
     repositories {
-        mavenCentral()
         google()
+        mavenCentral()
         gradlePluginPortal()
-        maven(url = "https://plugins.gradle.org/m2/")
     }
 }
 
 dependencyResolutionManagement {
     versionCatalogs {
-        register("libs")
+        create("baseLibs") {
+            from(files("gradle/libs.versions.toml"))
+        }
     }
     repositories {
         google()
@@ -20,4 +21,7 @@ dependencyResolutionManagement {
     }
 }
 
+rootProject.name = "Komposier"
 include(":app")
+include(":contracts")
+include(":component:snackbar")

@@ -2,16 +2,25 @@
 dokka = "1.7.10"
 detekt = "1.21.0"
 timber = "5.0.1"
-android = "7.4.0-alpha08"
+
+android = "7.4.0-alpha09"
+android-kotlin = "1.8.0"
+android-compose = "1.2.0"
+android-compose-material3 = "1.0.0-alpha15"
+android-activitycompose = "1.5.1"
+android-lifecycle = "2.5.1"
+
 kotlin = "1.7.10"
+kotlin-coroutines = "1.6.2"
+
 changelog = "1.73.0"
+
 googleservices = "4.3.13"
+
 hilt = "2.40.5"
 hilt-viewmodel = "1.0.0-alpha03"
 hilt-navigation-compose = "1.0.0"
-coroutines = "1.6.2"
 
-android-kotlin = "1.8.0"
 # Test
 junit = "4.13.2"
 mockk = "1.12.5"
@@ -21,10 +30,16 @@ espresso-android = "3.4.0"
 [libraries]
 kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-stdlibJdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
-kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlin-coroutines" }
 
 android-gradle = { module = "com.android.tools.build:gradle", version.ref = "android" }
 android-core-kotlin = { module = "androidx.core:core-ktx", version.ref = "android-kotlin" }
+android-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "android-lifecycle" }
+android-activitycompose = { module = "androidx.activity:activity-compose", version.ref = "android-activitycompose" }
+android-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "android-compose" }
+android-compose-uipreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "android-compose" }
+android-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "android-compose-material3" }
 
 hilt-gradle = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
@@ -39,21 +54,23 @@ timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 # Test
 test-junit = { module = "junit:junit", version.ref = "junit" }
 test-mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+test-android-compose = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "android-compose" }
 test-android-mockk = { module = "io.mockk:mockk-android", version.ref = "mockk" }
 test-android-junit = { module = "androidx.test.ext:junit", version.ref = "junit-android" }
 test-android-expresso = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso-android" }
 
 [bundles]
-base-libs = [
+core = [
     "android-core-kotlin",
     "kotlin-coroutines",
+    "kotlin-reflect",
     "timber"
 ]
-base-test = [
+core-test = [
     "test-junit",
     "test-mockk"
 ]
-base-test-android = [
+core-test-android = [
     "test-android-mockk",
     "test-android-junit",
     "test-android-expresso"
@@ -62,6 +79,12 @@ hilt = [
     "hilt-android",
     "hilt-viewmodel",
     "hilt-navigation-compose",
+]
+compose = [
+    "android-activitycompose",
+    "android-compose-ui",
+    "android-compose-uipreview",
+    "android-compose-material3",
 ]
 
 [plugins]

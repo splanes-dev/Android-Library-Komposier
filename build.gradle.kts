@@ -1,26 +1,35 @@
 buildscript {
-    subprojects {
 
-        if (isApp) {
-            apply(provider = libs.plugins.android.application)
-        } else {
-            apply(provider = libs.plugins.android.library)
-        }
-        apply(provider = libs.plugins.kotlin.android)
-        apply(provider = libs.plugins.kotlin.kapt)
-        apply(provider = libs.plugins.kotlin.parcelize)
-        apply(provider = libs.plugins.hilt)
-        // apply(provider = libs.plugins.dokka)
-        // apply(provider = libs.plugins.changelog)
-        // apply(provider = libs.plugins.detekt)
+    repositories {
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+        maven(url = "https://plugins.gradle.org/m2/")
+    }
+
+    dependencies {
+        classpath("com.google.gms:google-services:4.3.13")
+        classpath("com.google.dagger:hilt-android-gradle-plugin:2.40.5")
+    }
+
+    onEachModule {
+        baseLibs.plugins.android.run {
+            when (type) {
+                ProjectType.Application -> application
+                ProjectType.Library -> library
+            }
+        }.let { provider -> apply(provider = provider) }
+        apply(provider = baseLibs.plugins.kotlin.android)
+        apply(provider = baseLibs.plugins.kotlin.kapt)
+        apply(provider = baseLibs.plugins.kotlin.parcelize)
 
         dependencies {
-            "implementation"(libs.bundles.base.libs)
-            "kapt"(libs.hilt.compiler)
-            "implementation"(libs.bundles.hilt)
+            implementation(baseLibs.bundles.core.asProvider())
+            kapt(baseLibs.hilt.compiler)
+            implementation(baseLibs.bundles.hilt)
 
-            "testImplementation"(libs.bundles.base.test)
-            "androidTestImplementation"(libs.bundles.base.test.android)
+            testImplementation(baseLibs.bundles.core.test.asProvider())
+            androidTestImplementation(baseLibs.bundles.core.test.android)
         }
     }
 }
