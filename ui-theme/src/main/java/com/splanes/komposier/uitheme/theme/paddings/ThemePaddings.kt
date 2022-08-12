@@ -1,4 +1,4 @@
-package com.splanes.komposier.contracts.theme.paddings
+package com.splanes.komposier.uitheme.theme.paddings
 
 import androidx.compose.ui.unit.Dp
 

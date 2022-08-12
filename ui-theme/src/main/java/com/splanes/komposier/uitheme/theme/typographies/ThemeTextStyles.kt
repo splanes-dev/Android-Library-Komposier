@@ -1,4 +1,4 @@
-package com.splanes.komposier.contracts.theme.typographies
+package com.splanes.komposier.uitheme.theme.typographies
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

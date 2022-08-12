@@ -1,4 +1,4 @@
-package com.splanes.komposier.contracts.theme.colors
+package com.splanes.komposier.uitheme.theme.colors
 
 import androidx.compose.material3.ColorScheme
 import androidx.compose.ui.graphics.Color

@@ -1,4 +1,4 @@
-package com.splanes.komposier.contracts.theme
+package com.splanes.komposier.uitheme.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -7,12 +7,12 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.staticCompositionLocalOf
-import com.splanes.komposier.contracts.theme.colors.ThemeColors
-import com.splanes.komposier.contracts.theme.colors.toMaterialColorScheme
-import com.splanes.komposier.contracts.theme.shapes.ThemeShapes
-import com.splanes.komposier.contracts.theme.shapes.toMaterialShapes
-import com.splanes.komposier.contracts.theme.typographies.ThemeTextStyles
-import com.splanes.komposier.contracts.theme.typographies.toMaterialTypo
+import com.splanes.komposier.uitheme.theme.colors.ThemeColors
+import com.splanes.komposier.uitheme.theme.colors.toMaterialColorScheme
+import com.splanes.komposier.uitheme.theme.shapes.ThemeShapes
+import com.splanes.komposier.uitheme.theme.shapes.toMaterialShapes
+import com.splanes.komposier.uitheme.theme.typographies.ThemeTextStyles
+import com.splanes.komposier.uitheme.theme.typographies.toMaterialTypo
 
 interface ThemeContract {
     fun provideTheme(theme: Theme)
@@ -62,10 +62,10 @@ object AppTheme : ThemeContract {
     }
 
     @Composable
-    fun ThemeColors.scheme() = when (LocalThemeMode.current) {
-        Theme.Mode.Light -> light
-        Theme.Mode.Dark -> dark
-        Theme.Mode.System -> if (isSystemInDarkTheme()) dark else light
+    fun ThemeColors.scheme() = when (com.splanes.komposier.uitheme.theme.AppTheme.LocalThemeMode.current) {
+        com.splanes.komposier.uitheme.theme.Theme.Mode.Light -> light
+        com.splanes.komposier.uitheme.theme.Theme.Mode.Dark -> dark
+        com.splanes.komposier.uitheme.theme.Theme.Mode.System -> if (isSystemInDarkTheme()) dark else light
     }
 }
 

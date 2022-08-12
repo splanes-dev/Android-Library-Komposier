@@ -1,4 +1,4 @@
-package com.splanes.komposier.contracts.theme.shapes
+package com.splanes.komposier.uitheme.theme.shapes
 
 import androidx.compose.foundation.shape.CornerBasedShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,19 +13,6 @@ interface ThemeShapes {
     val extraLarge: CornerBasedShape
 
     companion object
-}
-
-inline val ThemeShapes.Companion.Default get() = object : ThemeShapes {
-    override val extraSmall: CornerBasedShape = RoundedCornerShape(2.dp)
-    override val small: CornerBasedShape
-        get() = TODO("Not yet implemented")
-    override val medium: CornerBasedShape
-        get() = TODO("Not yet implemented")
-    override val large: CornerBasedShape
-        get() = TODO("Not yet implemented")
-    override val extraLarge: CornerBasedShape
-        get() = TODO("Not yet implemented")
-
 }
 
 fun ThemeShapes.toMaterialShapes() = Shapes(

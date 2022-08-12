@@ -1,12 +1,12 @@
-package com.splanes.komposier.contracts.theme
+package com.splanes.komposier.uitheme.theme
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
-import com.splanes.komposier.contracts.theme.AppTheme.scheme
-import com.splanes.komposier.contracts.theme.colors.ThemeColorScheme
-import com.splanes.komposier.contracts.theme.paddings.ThemePaddings
-import com.splanes.komposier.contracts.theme.shapes.ThemeShapes
-import com.splanes.komposier.contracts.theme.typographies.ThemeTextStyles
+import com.splanes.komposier.uitheme.theme.AppTheme.scheme
+import com.splanes.komposier.uitheme.theme.colors.ThemeColorScheme
+import com.splanes.komposier.uitheme.theme.paddings.ThemePaddings
+import com.splanes.komposier.uitheme.theme.shapes.ThemeShapes
+import com.splanes.komposier.uitheme.theme.typographies.ThemeTextStyles
 
 val Colors: ThemeColorScheme
     @Composable
