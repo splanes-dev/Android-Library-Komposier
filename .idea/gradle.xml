@@ -13,9 +13,10 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/buildSrc" />
-            <option value="$PROJECT_DIR$/component" />
-            <option value="$PROJECT_DIR$/component/snackbar" />
-            <option value="$PROJECT_DIR$/contracts" />
+            <option value="$PROJECT_DIR$/commons" />
+            <option value="$PROJECT_DIR$/component-catalog" />
+            <option value="$PROJECT_DIR$/component-catalog/snackbar" />
+            <option value="$PROJECT_DIR$/ui-theme" />
           </set>
         </option>
       </GradleProjectSettings>

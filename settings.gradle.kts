@@ -1,3 +1,6 @@
+// TODO: Remove `@file:Suppress("UnstableApiUsage")` once Version Catalogs has had released as @Stable
+@file:Suppress("UnstableApiUsage")
+
 enableFeaturePreview("VERSION_CATALOGS")
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
@@ -12,7 +15,7 @@ pluginManagement {
 dependencyResolutionManagement {
     versionCatalogs {
         create("baseLibs") {
-            from(files("gradle/libs.versions.toml"))
+            from(files("gradle/base.libs.versions.toml"))
         }
     }
     repositories {
@@ -23,5 +26,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Komposier"
 include(":app")
-include(":contracts")
-include(":component:snackbar")
+include(":ui-theme")
+include(":component-catalog:snackbar")
+include(":commons")

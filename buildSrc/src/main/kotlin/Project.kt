@@ -1,8 +1,8 @@
 import org.gradle.api.Project
-import org.gradle.api.artifacts.MinimalExternalModuleDependency
 import org.gradle.api.provider.Provider
 import org.gradle.kotlin.dsl.DependencyHandlerScope
 import org.gradle.kotlin.dsl.apply
+import org.gradle.kotlin.dsl.configure
 import org.gradle.plugin.use.PluginDependency
 
 enum class ProjectType {
@@ -19,6 +19,10 @@ fun Project.onEachModule(config: Project.() -> Unit) {
     subprojects
         .filter { project -> project.childProjects.isEmpty() }
         .forEach(config)
+}
+
+fun Project.androidConfig(config: com.android.build.gradle.BaseExtension.() -> Unit) {
+    configure<com.android.build.gradle.BaseExtension> { config() }
 }
 
 fun <T> DependencyHandlerScope.implementation(provider: Provider<T>) {
