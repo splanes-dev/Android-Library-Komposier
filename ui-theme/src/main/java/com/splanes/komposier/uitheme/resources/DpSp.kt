@@ -6,7 +6,7 @@ import androidx.compose.ui.unit.dp
 import com.splanes.komposier.commons.reflect.get
 import com.splanes.komposier.commons.reflect.set
 import com.splanes.komposier.uitheme.theme.Paddings
-import com.splanes.komposier.uitheme.theme.paddings.ThemePaddings
+import com.splanes.komposier.uitheme.theme.models.paddings.ThemePaddings
 import kotlin.reflect.KMutableProperty
 
 inline val Dp.valueInt: Int get() = value.toInt()
