@@ -1,4 +1,4 @@
-package com.splanes.komposier.uitheme.theme.tokens
+package com.splanes.komposier.uitheme.theme.tokens.typography
 
 import androidx.compose.runtime.Composable
 import com.splanes.komposier.uitheme.theme.TextStyles
@@ -7,9 +7,6 @@ enum class TypographyTokens {
     BodyLarge,
     BodyMedium,
     BodySmall,
-    DecoratorLarge,
-    DecoratorMedium,
-    DecoratorSmall,
     DisplayLarge,
     DisplayMedium,
     DisplaySmall,
@@ -30,9 +27,6 @@ fun TypographyTokens.textStyle() =
         TypographyTokens.BodyLarge -> TextStyles.bodyLarge
         TypographyTokens.BodyMedium -> TextStyles.bodyMedium
         TypographyTokens.BodySmall -> TextStyles.bodySmall
-        TypographyTokens.DecoratorLarge -> TextStyles.decoratorLarge
-        TypographyTokens.DecoratorMedium -> TextStyles.decoratorMedium
-        TypographyTokens.DecoratorSmall -> TextStyles.decoratorSmall
         TypographyTokens.DisplayLarge -> TextStyles.displayLarge
         TypographyTokens.DisplayMedium -> TextStyles.displayMedium
         TypographyTokens.DisplaySmall -> TextStyles.displaySmall
