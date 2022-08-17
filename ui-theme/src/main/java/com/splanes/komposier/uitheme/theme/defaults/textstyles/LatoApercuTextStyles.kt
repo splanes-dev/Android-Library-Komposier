@@ -151,31 +151,3 @@ internal object LatoApercuTextStyles : ThemeTextStyles {
         )
     }
 }
-
-@Composable
-@Preview(
-    name = "Lato - Apercu",
-    showBackground = true,
-    backgroundColor = 0xFFFFFFFF
-)
-private fun LatoApercuTextStylesPreview() {
-    with(LatoApercuTextStyles) {
-        Column {
-            Text(modifier = Modifier.padding(top = 8.dp),text = "DisplayLarge", style = displayLarge)
-            Text(modifier = Modifier.padding(top = 8.dp),text = "DisplayMedium", style = displayMedium)
-            Text(modifier = Modifier.padding(top = 8.dp),text = "DisplaySmall", style = displaySmall)
-            Text(modifier = Modifier.padding(top = 8.dp),text = "HeadlineLarge", style = headlineLarge)
-            Text(modifier = Modifier.padding(top = 8.dp),text = "HeadlineMedium", style = headlineMedium)
-            Text(modifier = Modifier.padding(top = 8.dp),text = "HeadlineSmall", style = headlineSmall)
-            Text(modifier = Modifier.padding(top = 8.dp),text = "TitleLarge", style = titleLarge)
-            Text(modifier = Modifier.padding(top = 8.dp),text = "TitleMedium", style = titleMedium)
-            Text(modifier = Modifier.padding(top = 8.dp),text = "TitleSmall", style = titleSmall)
-            Text(modifier = Modifier.padding(top = 8.dp),text = "BodyLarge", style = bodyLarge)
-            Text(modifier = Modifier.padding(top = 8.dp),text = "BodyMedium", style = bodyMedium)
-            Text(modifier = Modifier.padding(top = 8.dp),text = "BodySmall", style = bodySmall)
-            Text(modifier = Modifier.padding(top = 8.dp),text = "LabelLarge", style = labelLarge)
-            Text(modifier = Modifier.padding(top = 8.dp),text = "LabelMedium", style = labelMedium)
-            Text(modifier = Modifier.padding(top = 8.dp),text = "LabelSmall", style = labelSmall)
-        }
-    }
-}

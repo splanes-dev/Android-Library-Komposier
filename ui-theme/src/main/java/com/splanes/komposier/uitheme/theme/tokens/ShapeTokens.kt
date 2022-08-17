@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.RectangleShape
 import com.splanes.komposier.uitheme.theme.Shapes
 
-enum class ShapesTokens {
+enum class ShapeTokens {
     CornerExtraLarge,
     CornerExtraLargeTop,
     CornerExtraSmall,
@@ -20,29 +20,29 @@ enum class ShapesTokens {
 }
 
 @Composable
-fun ShapesTokens.shape() =
+fun ShapeTokens.shape() =
     when (this) {
-        ShapesTokens.CornerExtraLarge -> Shapes.extraLarge
-        ShapesTokens.CornerExtraLargeTop -> Shapes.extraLarge.copy(
+        ShapeTokens.CornerExtraLarge -> Shapes.extraLarge
+        ShapeTokens.CornerExtraLargeTop -> Shapes.extraLarge.copy(
             bottomStart = ZeroCornerSize,
             bottomEnd = ZeroCornerSize
         )
-        ShapesTokens.CornerExtraSmall -> Shapes.extraSmall
-        ShapesTokens.CornerExtraSmallTop -> Shapes.extraSmall.copy(
+        ShapeTokens.CornerExtraSmall -> Shapes.extraSmall
+        ShapeTokens.CornerExtraSmallTop -> Shapes.extraSmall.copy(
             bottomStart = ZeroCornerSize,
             bottomEnd = ZeroCornerSize
         )
-        ShapesTokens.CornerFull -> Shapes.medium
-        ShapesTokens.CornerLarge -> Shapes.large
-        ShapesTokens.CornerLargeEnd -> Shapes.large.copy(
+        ShapeTokens.CornerFull -> Shapes.medium
+        ShapeTokens.CornerLarge -> Shapes.large
+        ShapeTokens.CornerLargeEnd -> Shapes.large.copy(
             topStart = ZeroCornerSize,
             bottomStart = ZeroCornerSize
         )
-        ShapesTokens.CornerLargeTop -> Shapes.large.copy(
+        ShapeTokens.CornerLargeTop -> Shapes.large.copy(
             bottomStart = ZeroCornerSize,
             bottomEnd = ZeroCornerSize
         )
-        ShapesTokens.CornerMedium -> Shapes.medium
-        ShapesTokens.CornerNone -> RectangleShape
-        ShapesTokens.CornerSmall -> Shapes.small
+        ShapeTokens.CornerMedium -> Shapes.medium
+        ShapeTokens.CornerNone -> RectangleShape
+        ShapeTokens.CornerSmall -> Shapes.small
     }

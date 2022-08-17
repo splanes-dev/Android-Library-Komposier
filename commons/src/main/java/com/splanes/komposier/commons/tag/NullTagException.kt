@@ -1,16 +1,11 @@
 package com.splanes.komposier.commons.tag
 
-import com.splanes.komposier.commons.errors.ErrorLogger
+import com.splanes.komposier.commons.errors.BaseException
 
 class NullTagException(override val message: String) :
-    RuntimeException(),
-    ErrorLogger by ErrorLogger.Delegate() {
+    BaseException() {
 
    constructor(obj: Any) : this(message = MSG_TEMPLATE.format(obj.toString()))
-
-    init {
-        bind(this)
-    }
 
     companion object {
         private const val MSG_TEMPLATE =

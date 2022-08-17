@@ -6,6 +6,7 @@ import com.splanes.komposier.uitheme.theme.defaults.colors.BlueThemeColors
 import com.splanes.komposier.uitheme.theme.defaults.colors.RedThemeColors
 import com.splanes.komposier.uitheme.theme.defaults.shapes.RectangleShapes
 import com.splanes.komposier.uitheme.theme.defaults.shapes.RoundedShapes
+import com.splanes.komposier.uitheme.theme.defaults.textstyles.ApercuQuickSansTextStyles
 import com.splanes.komposier.uitheme.theme.defaults.textstyles.EncodeRobotoTextStyles
 import com.splanes.komposier.uitheme.theme.defaults.textstyles.LatoApercuTextStyles
 import com.splanes.komposier.uitheme.theme.models.colors.ThemeColors
@@ -25,6 +26,7 @@ object ThemeDefaults {
         when (defaultTextStyles) {
             DefaultTextStyles.EncodeRoboto -> EncodeRobotoTextStyles
             DefaultTextStyles.LatoApercu -> LatoApercuTextStyles
+            DefaultTextStyles.ApercuQuicksans -> ApercuQuickSansTextStyles
         }
 
     fun shapesOf(defaultShapes: DefaultShapes): ThemeShapes =

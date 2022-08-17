@@ -5,6 +5,7 @@ import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import com.splanes.komposier.uitheme.theme.AppTheme
+import com.splanes.komposier.uitheme.theme.models.SystemUiMode
 import com.splanes.komposier.uitheme.theme.models.Theme
 
 interface ThemeColorScheme {
@@ -164,8 +165,12 @@ fun ThemeColorScheme.toMaterialColorScheme(): ColorScheme = ColorScheme(
 )
 
 @Composable
-fun ThemeColors.scheme(): ThemeColorScheme = when (AppTheme.safeProvider().localTheme.current.mode) {
-    Theme.Mode.Light -> light
-    Theme.Mode.Dark -> dark
-    Theme.Mode.System -> if (isSystemInDarkTheme()) dark else light
-}
+fun ThemeColors.systemScheme() = if (isSystemInDarkTheme()) dark else light
+
+@Composable
+fun ThemeColors.scheme(themeUiMode: Theme.UiMode = Theme.SystemUiMode): ThemeColorScheme =
+    when (themeUiMode) {
+        Theme.UiMode.Light -> light
+        Theme.UiMode.Dark -> dark
+        Theme.UiMode.System -> systemScheme()
+    }

@@ -1,12 +1,11 @@
 package com.splanes.komposier.commons.scope.defaults
 
+import com.splanes.komposier.commons.errors.BaseException
 import com.splanes.komposier.commons.errors.ErrorLogger
+import com.splanes.komposier.commons.errors.ErrorObservable
 import com.splanes.komposier.commons.errors.GenericException
 
-class NumberDefaultException(numClass: String?) :
-    RuntimeException(),
-    ErrorLogger by ErrorLogger.Delegate() {
-
+class NumberDefaultException(numClass: String?) : BaseException() {
     override val message: String =
         "Number default for class `$numClass` is not supported."
 }
@@ -26,6 +25,6 @@ inline fun <reified N : Number> N?.orDefault(): N =
 
 fun <N : Number> N?.orThrow(error: Throwable = GenericException()): N =
     this ?: when (error) {
-        is ErrorLogger -> error.`throw`()
+        is BaseException -> error.`throw`()
         else -> throw error
     }
