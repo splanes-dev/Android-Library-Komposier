@@ -2,84 +2,139 @@ package com.splanes.komposier.component.catalog.snackbar.ui.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconButtonColors
 import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.splanes.komposier.commons.defaults.orDefault
-import com.splanes.komposier.commons.scope.ifNoneNull
-import com.splanes.komposier.commons.scope.ifNotNull
-import com.splanes.komposier.commons.scope.ifThenOrNull
-import com.splanes.komposier.component.catalog.snackbar.state.SnackbarState
-import com.splanes.komposier.component.catalog.snackbar.state.SnackbarUi
-import com.splanes.komposier.component.catalog.snackbar.state.rememberSnackbarState
-import com.splanes.komposier.uitheme.resources.dp
-import com.splanes.komposier.uitheme.theme.Shapes
-import com.splanes.komposier.uitheme.theme.TextStyles
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
+import com.splanes.komposier.component.catalog.snackbar.R
+import com.splanes.komposier.component.catalog.snackbar.model.SnackbarUiData
+import com.splanes.komposier.component.catalog.snackbar.model.SnackbarUiModel
+import com.splanes.komposier.component.catalog.snackbar.tokens.SnackbarTokens
+import com.splanes.komposier.uitheme.theme.Paddings
+import com.splanes.komposier.uitheme.theme.tokens.color
+import com.splanes.komposier.uitheme.theme.tokens.shape
+import com.splanes.komposier.uitheme.theme.tokens.typography.textStyle
 
 @Composable
-fun Snackbar(
-    modifier: Modifier = Modifier,
-    state: SnackbarState = rememberSnackbarState(),
-) {
-    SnackbarHost(
-        modifier = modifier,
-        hostState = state.hostState,
-        snackbar = { data ->
-            when (val uiModel = data.visuals) {
-                is SnackbarUi -> {
-                    SnackbarComponent(uiModel)
+internal fun Snackbar(data: SnackbarUiData) {
+    with(data.model) {
+        androidx.compose.material3.Snackbar(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(SnackbarTokens.SingleLineContainerHeight),
+            action = actionLabel?.let { label ->
+                {
+                    SnackbarActionButton(
+                        text = label,
+                        color = colors.content.color(),
+                        style = SnackbarTokens.ContentTextStyle.textStyle(),
+                        onClick = data::performAction
+                    )
                 }
-            }
-        }
-    )
-}
-
-@Composable
-internal fun SnackbarComponent(model: SnackbarUi) {
-    androidx.compose.material3.Snackbar(
-        action = model.actionLabel.ifNotNull { { SnackbarActionButton() } },
-        dismissAction = ifThenOrNull(model.withDismissAction) { { SnackbarDismissButton() } }, // TODO()
-        shape = Shapes.medium,
-        containerColor = model.colors.containerColor(),
-        contentColor = model.colors.contentColor(),
-        actionContentColor = model.colors.trailingActionColor(),
-        dismissActionContentColor = model.colors.trailingActionColor()
-    ) {
-        Row(
-            horizontalArrangement = model.contentHorizontalArrangement(),
-            verticalAlignment = Alignment.CenterVertically
+            },
+            dismissAction = if (withDismissAction) {
+                {
+                    SnackbarDismissButton(
+                        color = colors.content.color(),
+                        style = SnackbarTokens.ContentTextStyle.textStyle(),
+                        onClick = data::dismiss
+                    )
+                }
+            } else {
+                null
+            },
+            shape = SnackbarTokens.ContainerShape.shape(),
+            containerColor = colors.container.color(),
+            contentColor = colors.content.color(),
+            actionContentColor = colors.content.color(),
+            dismissActionContentColor = colors.content.color()
         ) {
-            model.leadingIcon.ifNotNull {
-                SnackbarContentIcon(
-                    icon = this
+            Row(
+                modifier = Modifier.fillMaxSize(),
+                horizontalArrangement = contentHorizontalArrangement(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                if (leadingIcon != null) {
+                    SnackbarContentIcon(
+                        modifier = Modifier.size(SnackbarTokens.IconSize),
+                        icon = leadingIcon,
+                        color = colors.icon.color(),
+                        onClick = data::leadingIconClick
+                    )
+                }
+                Text(
+                    modifier = Modifier
+                        .weight(1f)
+                        .wrapContentHeight()
+                        .align(Alignment.CenterVertically),
+                    text = message,
+                    color = colors.content.color(),
+                    style = SnackbarTokens.ContentTextStyle.textStyle(),
+                    textAlign = TextAlign.Justify
                 )
-            }
-            SnackbarContentText()
-            model.trailingIcon.ifNotNull {
-                SnackbarContentIcon()
+                if (trailingIcon != null && actionLabel == null) {
+                    SnackbarContentIcon(
+                        modifier = Modifier.size(SnackbarTokens.IconSize),
+                        icon = trailingIcon,
+                        color = colors.icon.color(),
+                        onClick = data::trailingIconClick
+                    )
+                }
             }
         }
     }
 }
 
 @Composable
-internal fun SnackbarActionButton() {
-
+internal fun SnackbarActionButton(
+    text: String,
+    color: Color,
+    style: TextStyle,
+    onClick: () -> Unit
+) {
+    OutlinedButton(
+        modifier = Modifier
+            .wrapContentSize()
+            .padding(Paddings.mediumSmall),
+        onClick = onClick,
+        colors = ButtonDefaults.outlinedButtonColors(contentColor = color),
+        content = { Text(text = text, style = style) }
+    )
 }
 
 @Composable
-internal fun SnackbarDismissButton() {
-
+internal fun SnackbarDismissButton(
+    color: Color,
+    style: TextStyle,
+    onClick: () -> Unit
+) {
+    TextButton(
+        modifier = Modifier
+            .wrapContentSize()
+            .padding(Paddings.mediumSmall),
+        onClick = onClick,
+        colors = ButtonDefaults.textButtonColors(contentColor = color),
+        content = { Text(text = stringResource(id = R.string.snackbar_dismiss_action), style = style) }
+    )
 }
 
 @Composable
@@ -87,37 +142,27 @@ internal fun SnackbarContentIcon(
     modifier: Modifier,
     icon: ImageVector,
     color: Color,
-    onClick: (() -> Unit)?
+    onClick: () -> Unit
 ) {
     IconButton(
-        modifier = modifier,
-        onClick = onClick.orDefault(),
-        colors = color.findIconButtonColors()
+        modifier = Modifier
+            .wrapContentSize()
+            .padding(Paddings.small),
+        onClick = onClick,
+        colors = IconButtonDefaults.iconButtonColors(contentColor = color)
     ) {
         Icon(
-            modifier = Modifier.size(dp { 32 }),
+            modifier = modifier,
             imageVector = icon,
             contentDescription = null,
         )
     }
 }
 
-@Composable
-internal fun RowScope.SnackbarContentText(
-    modifier: Modifier,
-    contentText: String,
-    color: Color,
-) {
-    Text(
-        modifier = modifier.weight(1f),
-        text = contentText,
-        color = color,
-        style = TextStyles.titleSmall
-    )
-}
 
-internal fun SnackbarUi.contentHorizontalArrangement() =
-    ifNoneNull(leadingIcon, trailingIcon) { Arrangement.SpaceAround } ?: Arrangement.Start
-
-@Composable
-internal fun Color.findIconButtonColors(): IconButtonColors = IconButtonDefaults.
+internal fun SnackbarUiModel.contentHorizontalArrangement() =
+    if (leadingIcon != null && (trailingIcon != null || actionLabel != null)) {
+        Arrangement.SpaceBetween
+    } else {
+        Arrangement.Start
+    }

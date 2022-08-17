@@ -1,75 +1,53 @@
 package com.splanes.komposier.component.catalog.snackbar.model
 
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import com.splanes.komposier.contracts.resources.ColorToken
-import com.splanes.komposier.contracts.resources.of
+import com.splanes.komposier.component.catalog.snackbar.tokens.SnackbarTokens
+import com.splanes.komposier.uitheme.theme.tokens.ColorSchemeTokens
 
-interface SnackbarColors {
+sealed interface SnackbarColors {
 
-    val contentColor: Color
-    val containerColor: Color
-    val leadingIconColor: Color
-    val trailingIconColor: Color
-    val trailingActionColor: Color
+    val container: ColorSchemeTokens
+    val content: ColorSchemeTokens
+    val icon: ColorSchemeTokens
 
-    interface ColorTokens {
-        val content: ColorToken
-        val container: ColorToken
-        val leadingIcon: ColorToken
-        val trailingIcon: ColorToken
-        val trailingAction: ColorToken
-
-        @Composable
-        fun contentColor(): Color = content.color
-        @Composable
-        fun containerColor(): Color = container.color
-        @Composable
-        fun leadingIconColor(): Color = leadingIcon.color
-        @Composable
-        fun trailingIconColor(): Color = trailingIcon.color
-        @Composable
-        fun trailingActionColor(): Color = trailingAction.color
-
-        @Composable
-        fun toSnackbarColors() = object : SnackbarColors {
-            override val contentColor: Color = contentColor()
-            override val containerColor: Color = containerColor()
-            override val leadingIconColor: Color = leadingIconColor()
-            override val trailingIconColor: Color = trailingIconColor()
-            override val trailingActionColor: Color = trailingActionColor()
-
-        }
+    object Default : SnackbarColors {
+        override val container: ColorSchemeTokens = SnackbarTokens.ContentColorDefault
+        override val content: ColorSchemeTokens = SnackbarTokens.ContainerColorDefault
+        override val icon: ColorSchemeTokens = SnackbarTokens.IconColorDefault
     }
 
-    object Default : ColorTokens {
-        override val content: ColorToken = ColorToken.of { onTertiaryContainer }
-        override val container: ColorToken = ColorToken.of { tertiaryContainer }
-        override val leadingIcon: ColorToken = ColorToken.of { tertiary}
-        override val trailingIcon: ColorToken = ColorToken.of { tertiary }
-        override val trailingAction: ColorToken = ColorToken.of { onTertiaryContainer }
+    object Success : SnackbarColors {
+        override val container: ColorSchemeTokens = SnackbarTokens.ContentColorSuccess
+        override val content: ColorSchemeTokens = SnackbarTokens.ContainerColorSuccess
+        override val icon: ColorSchemeTokens = SnackbarTokens.IconColorSuccess
     }
-    object Success : ColorTokens {
-        override val content: ColorToken = ColorToken.of { onSuccessContainer }
-        override val container: ColorToken = ColorToken.of { successContainer }
-        override val leadingIcon: ColorToken = ColorToken.of { success }
-        override val trailingIcon: ColorToken = ColorToken.of { success }
-        override val trailingAction: ColorToken = ColorToken.of { onSuccessContainer }
+
+    object Warning : SnackbarColors {
+        override val container: ColorSchemeTokens = SnackbarTokens.ContentColorWarning
+        override val content: ColorSchemeTokens = SnackbarTokens.ContainerColorWarning
+        override val icon: ColorSchemeTokens = SnackbarTokens.IconColorWarning
     }
-    object Warning : ColorTokens {
-        override val content: ColorToken = ColorToken.of { onWarningContainer }
-        override val container: ColorToken = ColorToken.of { warningContainer }
-        override val leadingIcon: ColorToken = ColorToken.of { warning }
-        override val trailingIcon: ColorToken = ColorToken.of { warning }
-        override val trailingAction: ColorToken = ColorToken.of { onWarningContainer }
+
+    object Info : SnackbarColors {
+        override val container: ColorSchemeTokens = SnackbarTokens.ContentColorInfo
+        override val content: ColorSchemeTokens = SnackbarTokens.ContainerColorInfo
+        override val icon: ColorSchemeTokens = SnackbarTokens.IconColorInfo
     }
-    object Info : ColorTokens {
-        override val content: ColorToken = ColorToken.of { onInfoContainer }
-        override val container: ColorToken = ColorToken.of { infoContainer }
-        override val leadingIcon: ColorToken = ColorToken.of { info }
-        override val trailingIcon: ColorToken = ColorToken.of { info }
-        override val trailingAction: ColorToken = ColorToken.of { onInfoContainer }
-    }
+
+    data class Custom internal constructor(
+        override val container: ColorSchemeTokens,
+        override val content: ColorSchemeTokens,
+        override val icon: ColorSchemeTokens
+    ) : SnackbarColors
 
     companion object
 }
+
+fun SnackbarColors.Companion.colorsDefault() = SnackbarColors.Default
+fun SnackbarColors.Companion.colorsSuccess() = SnackbarColors.Success
+fun SnackbarColors.Companion.colorsWarning() = SnackbarColors.Warning
+fun SnackbarColors.Companion.colorsInfo() = SnackbarColors.Info
+fun SnackbarColors.Companion.colorsOf(
+    container: ColorSchemeTokens,
+    content: ColorSchemeTokens,
+    icon: ColorSchemeTokens
+) = SnackbarColors.Custom(container = container, content = content, icon = icon)
