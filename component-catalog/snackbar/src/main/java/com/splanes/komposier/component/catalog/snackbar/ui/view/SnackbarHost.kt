@@ -1,7 +1,6 @@
 package com.splanes.komposier.component.catalog.snackbar.ui.view
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.LinearEasing
@@ -64,15 +63,14 @@ fun SnackbarHost(
 }
 
 
-// TODO: magic numbers adjustment
 internal fun SnackbarDuration.toMillis(
     hasAction: Boolean,
     accessibilityManager: AccessibilityManager?
 ): Long {
     val original = when (this) {
         SnackbarDuration.Indefinite -> Long.MAX_VALUE
-        SnackbarDuration.Long -> 10000L
-        SnackbarDuration.Short -> 4000L
+        SnackbarDuration.Long -> SnackbarDurationLongMillis
+        SnackbarDuration.Short -> SnackbarDurationShortMillis
     }
     if (accessibilityManager == null) {
         return original
@@ -84,10 +82,6 @@ internal fun SnackbarDuration.toMillis(
         containsControls = hasAction
     )
 }
-
-// TODO: to be replaced with the public customizable implementation
-// it's basically tweaked nullable version of Crossfade
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 private fun FadeInFadeOutWithScale(
     current: SnackbarUiData?,
@@ -196,6 +190,8 @@ private fun animatedOpacity(
     return alpha.asState()
 }
 
+private const val SnackbarDurationShortMillis = 4000L
+private const val SnackbarDurationLongMillis = 10000L
 private const val SnackbarEnterTransitionMillis = 300
 private const val SnackbarSpringDampingRatio = .425f
 private const val SnackbarExitTransitionMillis = 200
