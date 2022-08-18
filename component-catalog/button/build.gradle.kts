@@ -1,7 +1,7 @@
 @file:Suppress("UnstableApiUsage")
 
 android {
-    namespace = "com.splanes.komposier.component.catalog.snackbar"
+    namespace = "com.splanes.komposier.component.catalog.button"
 
     buildTypes {
         release {

@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/commons" />
             <option value="$PROJECT_DIR$/component-catalog" />
+            <option value="$PROJECT_DIR$/component-catalog/button" />
             <option value="$PROJECT_DIR$/component-catalog/snackbar" />
             <option value="$PROJECT_DIR$/ui-theme" />
           </set>

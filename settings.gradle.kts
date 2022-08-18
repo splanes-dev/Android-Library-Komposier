@@ -28,4 +28,5 @@ rootProject.name = "Komposier"
 include(":app")
 include(":ui-theme")
 include(":component-catalog:snackbar")
+include(":component-catalog:button")
 include(":commons")

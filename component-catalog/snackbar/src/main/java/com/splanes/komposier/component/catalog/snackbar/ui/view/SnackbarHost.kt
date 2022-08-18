@@ -1,21 +1,30 @@
 package com.splanes.komposier.component.catalog.snackbar.ui.view
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationSpec
-import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.material3.SnackbarDuration
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.RecomposeScope
 import androidx.compose.runtime.State
 import androidx.compose.runtime.currentRecomposeScope
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.AccessibilityManager
@@ -49,11 +58,7 @@ fun SnackbarHost(
     }
     FadeInFadeOutWithScale(
         current = snackbarState.snackbarUiData,
-        modifier = modifier.padding(
-            start = SnackbarTokens.ContainerHorizontalPaddings,
-            end = SnackbarTokens.ContainerHorizontalPaddings,
-            bottom = SnackbarTokens.ContainerBottomPadding,
-        ),
+        modifier = modifier,
         content = snackbar
     )
 }
@@ -82,6 +87,7 @@ internal fun SnackbarDuration.toMillis(
 
 // TODO: to be replaced with the public customizable implementation
 // it's basically tweaked nullable version of Crossfade
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 private fun FadeInFadeOutWithScale(
     current: SnackbarUiData?,
@@ -99,21 +105,10 @@ private fun FadeInFadeOutWithScale(
         keys.filterNotNull().mapTo(state.items) { key ->
             FadeInFadeOutAnimationItem(key) { children ->
                 val isVisible = key == current
-                val duration = if (isVisible) SnackbarFadeInMillis else SnackbarFadeOutMillis
-                val delay = SnackbarFadeOutMillis + SnackbarInBetweenDelayMillis
-                val animationDelay = if (isVisible && keys.filterNotNull().size != 1) delay else 0
-                val translation = animatedTranslation(
-                    visible = isVisible,
+                val duration = if (isVisible) SnackbarEnterTransitionMillis else SnackbarExitTransitionMillis
+                val opacity by animatedOpacity(
                     animation = tween(
                         easing = LinearEasing,
-                        delayMillis = animationDelay + 100,
-                        durationMillis = duration
-                    )
-                )
-                val opacity = animatedOpacity(
-                    animation = tween(
-                        easing = LinearEasing,
-                        delayMillis = animationDelay,
                         durationMillis = duration
                     ),
                     visible = isVisible,
@@ -125,29 +120,38 @@ private fun FadeInFadeOutWithScale(
                         }
                     }
                 )
-                val scale = animatedScale(
-                    animation = tween(
-                        easing = FastOutSlowInEasing,
-                        delayMillis = animationDelay,
-                        durationMillis = duration
-                    ),
-                    visible = isVisible
-                )
                 Box(
-                    Modifier
-                        .graphicsLayer(
-                            scaleX = scale.value,
-                            scaleY = scale.value,
-                            alpha = opacity.value,
-                            translationY = translation.value
-                        )
+                    modifier = Modifier
+                        .graphicsLayer(alpha = opacity)
                         .semantics {
                             liveRegion = LiveRegionMode.Polite
                             dismiss { key.dismiss(); true }
+                        },
+                    content = {
+                        var visible by remember { mutableStateOf(false) }
+                        Column {
+                            children()
+                            AnimatedVisibility(
+                                visible = visible,
+                                enter = expandVertically(
+                                    animationSpec = spring(
+                                        SnackbarSpringDampingRatio,
+                                        Spring.StiffnessMediumLow
+                                    )
+                                ),
+                                exit = shrinkVertically(
+                                    animationSpec = tween(durationMillis = SnackbarExitTransitionMillis)
+                                )
+                            ) {
+                                Spacer(modifier = Modifier.height(SnackbarTokens.ContainerBottomPadding))
+                            }
+                            LaunchedEffect(isVisible) {
+                                delay(SnackbarTranslationDelayMillis)
+                                visible = isVisible
+                            }
                         }
-                ) {
-                    children()
-                }
+                    }
+                )
             }
         }
     }
@@ -155,9 +159,7 @@ private fun FadeInFadeOutWithScale(
         state.scope = currentRecomposeScope
         state.items.forEach { (item, opacity) ->
             key(item) {
-                opacity {
-                    content(item!!)
-                }
+                opacity { content(item!!) }
             }
         }
     }
@@ -194,30 +196,7 @@ private fun animatedOpacity(
     return alpha.asState()
 }
 
-@Composable
-private fun animatedScale(animation: AnimationSpec<Float>, visible: Boolean): State<Float> {
-    val scale = remember { Animatable(if (!visible) 1f else 0.8f) }
-    LaunchedEffect(visible) {
-        scale.animateTo(
-            if (visible) 1f else 0.8f,
-            animationSpec = animation
-        )
-    }
-    return scale.asState()
-}
-
-@Composable
-private fun animatedTranslation(animation: AnimationSpec<Float>, visible: Boolean): State<Float> {
-    val translation = remember { Animatable(if (!visible) 0f else 20f) }
-    LaunchedEffect(visible) {
-        translation.animateTo(
-            if (visible) 20f else 0f,
-            animationSpec = animation
-        )
-    }
-    return translation.asState()
-}
-
-private const val SnackbarFadeInMillis = 150
-private const val SnackbarFadeOutMillis = 75
-private const val SnackbarInBetweenDelayMillis = 0
+private const val SnackbarEnterTransitionMillis = 300
+private const val SnackbarSpringDampingRatio = .425f
+private const val SnackbarExitTransitionMillis = 200
+private const val SnackbarTranslationDelayMillis = 15L
