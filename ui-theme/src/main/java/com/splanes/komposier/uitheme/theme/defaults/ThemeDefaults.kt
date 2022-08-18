@@ -2,8 +2,10 @@ package com.splanes.komposier.uitheme.theme.defaults
 
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.splanes.komposier.uitheme.theme.defaults.colors.BlueThemeColors
-import com.splanes.komposier.uitheme.theme.defaults.colors.RedThemeColors
+import com.splanes.komposier.uitheme.theme.defaults.colors.AmberThemeColors
+import com.splanes.komposier.uitheme.theme.defaults.colors.ButterflyBushThemeColors
+import com.splanes.komposier.uitheme.theme.defaults.colors.MediumCarmineThemeColors
+import com.splanes.komposier.uitheme.theme.defaults.colors.OrientThemeColors
 import com.splanes.komposier.uitheme.theme.defaults.shapes.RectangleShapes
 import com.splanes.komposier.uitheme.theme.defaults.shapes.RoundedShapes
 import com.splanes.komposier.uitheme.theme.defaults.textstyles.ApercuQuickSansTextStyles
@@ -18,8 +20,10 @@ object ThemeDefaults {
 
     fun themeColorsOf(defaultColors: DefaultColors): ThemeColors =
         when (defaultColors) {
-            DefaultColors.Red -> RedThemeColors
-            DefaultColors.Blue -> BlueThemeColors
+            DefaultColors.MediumCarmine -> MediumCarmineThemeColors
+            DefaultColors.ButterflyBush -> ButterflyBushThemeColors
+            DefaultColors.Orient -> OrientThemeColors
+            DefaultColors.Amber -> AmberThemeColors
         }.colors()
 
     fun textStylesOf(defaultTextStyles: DefaultTextStyles): ThemeTextStyles =

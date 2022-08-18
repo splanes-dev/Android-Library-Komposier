@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.splanes.komposier.uitheme.theme.AppTheme
@@ -21,7 +20,6 @@ import com.splanes.komposier.uitheme.theme.TextStyles
 import com.splanes.komposier.uitheme.theme.defaults.DefaultColors
 import com.splanes.komposier.uitheme.theme.defaults.DefaultShapes
 import com.splanes.komposier.uitheme.theme.defaults.DefaultTextStyles
-import com.splanes.komposier.uitheme.theme.defaults.ThemeDefaults
 import com.splanes.komposier.uitheme.theme.models.typographies.ThemeTextStyles
 
 
@@ -75,7 +73,7 @@ private fun TextStyleColumn() {
 )
 private fun LatoApercuTextStylesDarkPreview() {
     AppTheme.withProviderOf(
-        DefaultColors.Red,
+        DefaultColors.MediumCarmine,
         DefaultTextStyles.LatoApercu,
         DefaultShapes.Rounded,
     )
@@ -88,7 +86,7 @@ private fun LatoApercuTextStylesDarkPreview() {
 )
 private fun LatoApercuTextStylesPreview() {
     AppTheme.withProviderOf(
-        DefaultColors.Red,
+        DefaultColors.MediumCarmine,
         DefaultTextStyles.LatoApercu,
         DefaultShapes.Rounded,
     )
@@ -101,7 +99,7 @@ private fun LatoApercuTextStylesPreview() {
 )
 private fun EncodeRobotoTextStylesDarkPreview() {
     AppTheme.withProviderOf(
-        DefaultColors.Red,
+        DefaultColors.MediumCarmine,
         DefaultTextStyles.EncodeRoboto,
         DefaultShapes.Rounded,
     )
@@ -114,7 +112,7 @@ private fun EncodeRobotoTextStylesDarkPreview() {
 )
 private fun EncodeRobotoTextStylesPreview() {
     AppTheme.withProviderOf(
-        DefaultColors.Red,
+        DefaultColors.MediumCarmine,
         DefaultTextStyles.EncodeRoboto,
         DefaultShapes.Rounded,
     )
@@ -127,7 +125,7 @@ private fun EncodeRobotoTextStylesPreview() {
 )
 private fun ApercuQuickSansTextStylesDarkPreview() {
     AppTheme.withProviderOf(
-        DefaultColors.Blue,
+        DefaultColors.ButterflyBush,
         DefaultTextStyles.ApercuQuicksans,
         DefaultShapes.Rounded,
     )
@@ -140,7 +138,7 @@ private fun ApercuQuickSansTextStylesDarkPreview() {
 )
 private fun ApercuQuickSansTextStylesPreview() {
     AppTheme.withProviderOf(
-        DefaultColors.Blue,
+        DefaultColors.ButterflyBush,
         DefaultTextStyles.ApercuQuicksans,
         DefaultShapes.Rounded,
     )

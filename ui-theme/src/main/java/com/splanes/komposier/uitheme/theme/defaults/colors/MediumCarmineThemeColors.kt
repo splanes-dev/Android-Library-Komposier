@@ -1,11 +1,11 @@
 package com.splanes.komposier.uitheme.theme.defaults.colors
 
 import androidx.compose.ui.graphics.Color
-import com.splanes.komposier.uitheme.theme.defaults.DefaultColors
 import com.splanes.komposier.uitheme.theme.models.colors.ThemeColorScheme
 import com.splanes.komposier.uitheme.theme.models.colors.of
 
-internal object RedThemeColors : DefaultThemeColors {
+internal object MediumCarmineThemeColors : DefaultThemeColors {
+    override val baseColors: List<ThemeBaseColor> = listOf(ThemeBaseColor.Red)
     override val light by lazy {
         ThemeColorScheme.of(
             primary = Color(0xFFA33C2D),

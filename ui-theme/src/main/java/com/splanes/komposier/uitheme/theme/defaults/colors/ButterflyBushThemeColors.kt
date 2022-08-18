@@ -4,7 +4,8 @@ import androidx.compose.ui.graphics.Color
 import com.splanes.komposier.uitheme.theme.models.colors.ThemeColorScheme
 import com.splanes.komposier.uitheme.theme.models.colors.of
 
-internal object BlueThemeColors : DefaultThemeColors {
+internal object ButterflyBushThemeColors : DefaultThemeColors {
+    override val baseColors: List<ThemeBaseColor> = listOf(ThemeBaseColor.Blue)
     override val light by lazy {
         ThemeColorScheme.of(
             primary = Color(0xFF5855A3),

@@ -14,7 +14,7 @@ object AppTheme {
 
     private val ProviderFallback by lazy {
         ThemeProvider.fromDefaults(
-            colors = DefaultColors.Red,
+            colors = DefaultColors.MediumCarmine,
             textStyles = DefaultTextStyles.EncodeRoboto,
             shapes = DefaultShapes.Rounded
         )
