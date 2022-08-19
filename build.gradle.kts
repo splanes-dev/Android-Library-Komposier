@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
+@file:Suppress("UnstableApiUsage")
 
 buildscript {
 
@@ -7,6 +7,7 @@ buildscript {
         google()
         gradlePluginPortal()
         maven(url = "https://plugins.gradle.org/m2/")
+        maven(url = "https://jitpack.io")
     }
 
     dependencies {
