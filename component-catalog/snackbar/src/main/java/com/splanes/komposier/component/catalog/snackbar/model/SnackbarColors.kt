@@ -1,7 +1,7 @@
 package com.splanes.komposier.component.catalog.snackbar.model
 
 import com.splanes.komposier.component.catalog.snackbar.tokens.SnackbarTokens
-import com.splanes.komposier.uitheme.theme.tokens.ColorSchemeTokens
+import com.splanes.komposier.ui.theme.tokens.ColorSchemeTokens
 
 sealed interface SnackbarColors {
 

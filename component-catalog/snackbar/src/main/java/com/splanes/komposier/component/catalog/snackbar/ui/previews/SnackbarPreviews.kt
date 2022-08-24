@@ -20,11 +20,11 @@ import com.splanes.komposier.component.catalog.snackbar.model.SnackbarColors
 import com.splanes.komposier.component.catalog.snackbar.model.SnackbarUiModel
 import com.splanes.komposier.component.catalog.snackbar.ui.state.rememberSnackbarState
 import com.splanes.komposier.component.catalog.snackbar.ui.view.SnackbarHost
-import com.splanes.komposier.uitheme.theme.AppTheme
-import com.splanes.komposier.uitheme.theme.Colors
-import com.splanes.komposier.uitheme.theme.defaults.DefaultColors
-import com.splanes.komposier.uitheme.theme.defaults.DefaultShapes
-import com.splanes.komposier.uitheme.theme.defaults.DefaultTextStyles
+import com.splanes.komposier.ui.theme.AppTheme
+import com.splanes.komposier.ui.theme.Colors
+import com.splanes.komposier.ui.theme.defaults.DefaultColors
+import com.splanes.komposier.ui.theme.defaults.DefaultShapes
+import com.splanes.komposier.ui.theme.defaults.DefaultTextStyles
 import timber.log.Timber
 
 private fun logClick(action: () -> String) {

@@ -24,5 +24,5 @@ android {
 }
 
 dependencies {
-    api(projects.uiTheme)
+    api(projects.ui.theme)
 }

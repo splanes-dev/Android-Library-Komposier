@@ -1,9 +1,9 @@
 package com.splanes.komposier.component.catalog.snackbar.tokens
 
 import androidx.compose.ui.unit.dp
-import com.splanes.komposier.uitheme.theme.tokens.ColorSchemeTokens
-import com.splanes.komposier.uitheme.theme.tokens.ShapeTokens
-import com.splanes.komposier.uitheme.theme.tokens.typography.TypographyTokens
+import com.splanes.komposier.ui.theme.tokens.ColorSchemeTokens
+import com.splanes.komposier.ui.theme.tokens.ShapeTokens
+import com.splanes.komposier.ui.theme.tokens.typography.TypographyTokens
 
 internal object SnackbarTokens {
 

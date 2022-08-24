@@ -47,11 +47,11 @@ import androidx.compose.ui.unit.dp
 import com.splanes.komposier.component.catalog.snackbar.model.SnackbarUiData
 import com.splanes.komposier.component.catalog.snackbar.model.SnackbarUiModel
 import com.splanes.komposier.component.catalog.snackbar.tokens.SnackbarTokens
-import com.splanes.komposier.uitheme.theme.Paddings
-import com.splanes.komposier.uitheme.theme.tokens.ColorSchemeTokens
-import com.splanes.komposier.uitheme.theme.tokens.color
-import com.splanes.komposier.uitheme.theme.tokens.shape
-import com.splanes.komposier.uitheme.theme.tokens.typography.textStyle
+import com.splanes.komposier.ui.theme.Paddings
+import com.splanes.komposier.ui.theme.tokens.ColorSchemeTokens
+import com.splanes.komposier.ui.theme.tokens.color
+import com.splanes.komposier.ui.theme.tokens.shape
+import com.splanes.komposier.ui.theme.tokens.typography.textStyle
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
