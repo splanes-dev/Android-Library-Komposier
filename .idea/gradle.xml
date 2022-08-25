@@ -15,9 +15,12 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/commons" />
             <option value="$PROJECT_DIR$/component-catalog" />
-            <option value="$PROJECT_DIR$/component-catalog/button" />
+            <option value="$PROJECT_DIR$/component-catalog/buttons-extension" />
+            <option value="$PROJECT_DIR$/component-catalog/dialogs-extension" />
             <option value="$PROJECT_DIR$/component-catalog/snackbar" />
-            <option value="$PROJECT_DIR$/ui-theme" />
+            <option value="$PROJECT_DIR$/ui" />
+            <option value="$PROJECT_DIR$/ui/theme" />
+            <option value="$PROJECT_DIR$/ui/toolkit" />
           </set>
         </option>
       </GradleProjectSettings>
