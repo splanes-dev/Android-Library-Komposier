@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 android {
     namespace = "com.splanes.komposier.commons"
     compileSdk = 32
@@ -24,11 +26,11 @@ android {
 
 dependencies {
 
-    implementation(baseLibs.bundles.compose)
-    implementation(baseLibs.android.lifecycle)
+    implementation(androidLibs.bundles.compose)
+    implementation(androidLibs.android.lifecycle)
 
-    testImplementation(baseLibs.bundles.core.test)
-    androidTestImplementation(baseLibs.bundles.core.test.android)
+    testImplementation(testLibs.bundles.test.unit)
+    androidTestImplementation(testLibs.bundles.test.instrumental)
 
     // TODO: Refactor to handle dependencies with VersionCatalogs
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.2.1")

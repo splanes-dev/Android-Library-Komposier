@@ -25,5 +25,5 @@ android {
 
 dependencies {
     api(projects.commons)
-    api(baseLibs.bundles.compose)
+    api(androidLibs.bundles.compose)
 }

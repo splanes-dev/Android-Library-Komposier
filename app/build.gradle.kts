@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 android {
     namespace = "com.splanes.libs.komposier.app"
     compileSdk = 32
@@ -47,8 +49,8 @@ android {
 
 dependencies {
 
-    implementation(baseLibs.bundles.compose)
-    implementation(baseLibs.android.lifecycle)
+    implementation(androidLibs.bundles.compose)
+    implementation(androidLibs.android.lifecycle)
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")

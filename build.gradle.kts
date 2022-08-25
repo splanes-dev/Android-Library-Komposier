@@ -6,8 +6,6 @@ buildscript {
         mavenCentral()
         google()
         gradlePluginPortal()
-        maven(url = "https://plugins.gradle.org/m2/")
-        maven(url = "https://jitpack.io")
     }
 
     dependencies {
@@ -17,7 +15,7 @@ buildscript {
     }
 
     onEachModule {
-        baseLibs.plugins.android.run {
+        androidLibs.plugins.android.run {
             when (type) {
                 ProjectType.Application -> application
                 ProjectType.Library -> library
@@ -43,12 +41,13 @@ buildscript {
         }
 
         dependencies {
-            implementation(baseLibs.bundles.core.asProvider())
-            kapt(baseLibs.hilt.compiler)
-            implementation(baseLibs.bundles.hilt)
+            implementation(baseLibs.bundles.core)
+            implementation(androidLibs.bundles.core)
+            kapt(androidLibs.hilt.compiler)
+            implementation(androidLibs.bundles.hilt)
 
-            testImplementation(baseLibs.bundles.core.test.asProvider())
-            androidTestImplementation(baseLibs.bundles.core.test.android)
+            testImplementation(testLibs.bundles.test.unit)
+            androidTestImplementation(testLibs.bundles.test.instrumental)
         }
     }
 }
