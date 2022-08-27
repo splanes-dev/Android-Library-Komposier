@@ -1,52 +1,52 @@
 [versions]
-android = "7.4.0-alpha09"
+android-gradle = "7.4.0-alpha09"
 android-kotlin = "1.8.0"
 android-material = "1.6.1"
 android-compose = "1.2.0"
-android-compose-kotlinCompilerExtensions = "1.3.0-beta01"
+# android-compose-kotlinCompilerExtensions = "1.3.0-beta01"
 android-compose-material3 = "1.0.0-alpha15"
-android-compose-material-iconsExt = "1.2.1"
-android-activitycompose = "1.5.1"
+android-compose-material-icons_ext = "1.2.1"
+android-compose-lottie = "5.2.1-SNAPSHOT"
+android-activity_compose = "1.5.1"
 android-lifecycle = "2.5.1"
-hilt = "2.40.5"
-hilt-viewmodel = "1.0.0-alpha03"
-hilt-navigation-compose = "1.0.0"
-lottie-compose = "5.2.1-SNAPSHOT"
+android-dagger-hilt = "2.40.5"
+android-dagger-hilt-viewmodel = "1.0.0-alpha03"
+android-dagger-hilt-compose_navigation = "1.0.0"
 
 [libraries]
-android-gradle = { module = "com.android.tools.build:gradle", version.ref = "android" }
+android-gradle = { module = "com.android.tools.build:gradle", version.ref = "android-gradle" }
 android-core-kotlin = { module = "androidx.core:core-ktx", version.ref = "android-kotlin" }
 android-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "android-lifecycle" }
-android-activitycompose = { module = "androidx.activity:activity-compose", version.ref = "android-activitycompose" }
+android-activity_compose = { module = "androidx.activity:activity-compose", version.ref = "android-activity_compose" }
 android-material = { module = "com.google.android.material:material" , version.ref = "android-material" }
 android-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "android-compose" }
 android-compose-uipreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "android-compose" }
 android-compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "android-compose-material3" }
-android-compose-material-iconsExt = { module = "androidx.compose.material:material-icons-extended", version.ref = "android-compose-material-iconsExt" }
-hilt-gradle = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
-hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
-hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
-hilt-viewmodel = { module = "androidx.hilt:hilt-lifecycle-viewmodel", version.ref = "hilt-viewmodel" }
-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
-lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie-compose" }
+android-compose-material-icons_ext = { module = "androidx.compose.material:material-icons-extended", version.ref = "android-compose-material-icons_ext" }
+android-dagger-hilt-gradle = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "android-dagger-hilt" }
+android-dagger-hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "android-dagger-hilt" }
+android-dagger-hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "android-dagger-hilt" }
+android-dagger-hilt-viewmodel = { module = "androidx.hilt:hilt-lifecycle-viewmodel", version.ref = "android-dagger-hilt-viewmodel" }
+android-dagger-hilt-compose_navigation = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "android-dagger-hilt-compose_navigation" }
+android-compose-lottie = { module = "com.airbnb.android:lottie-compose", version.ref = "android-compose-lottie" }
 
 [bundles]
 core = ["android-core-kotlin"]
 hilt = [
-    "hilt-android",
-    "hilt-viewmodel",
-    "hilt-navigation-compose",
+    "android-dagger-hilt-android",
+    "android-dagger-hilt-viewmodel",
+    "android-dagger-hilt-compose_navigation",
 ]
 compose = [
-    "android-activitycompose",
+    "android-activity_compose",
     "android-compose-ui",
     "android-compose-uipreview",
     "android-compose-material3",
     "android-material",
-    "android-compose-material-iconsExt",
+    "android-compose-material-icons_ext",
 ]
 
 [plugins]
-android-application = { id = "com.android.application", version.ref = "android" }
-android-library = { id = "com.android.library", version.ref = "android" }
-hilt = { id = "dagger.hilt.android.plugin", version.ref = "hilt" }
+android-application = { id = "com.android.application", version.ref = "android-gradle" }
+android-library = { id = "com.android.library", version.ref = "android-gradle" }
+hilt = { id = "dagger.hilt.android.plugin", version.ref = "android-dagger-hilt" }

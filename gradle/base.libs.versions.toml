@@ -5,7 +5,7 @@ timber = "5.0.1"
 changelog = "1.73.0"
 kotlin = "1.7.10"
 kotlin-coroutines = "1.6.2"
-googleservices = "4.3.13"
+google_services = "4.3.13"
 
 
 [libraries]
@@ -13,7 +13,8 @@ kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.
 kotlin-stdlibJdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlin-coroutines" }
-googleservices-gradle = { module = "com.google.gms:google-services", version.ref = "googleservices" }
+detekt-gradle = { module= "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+google_services-gradle = { module = "com.google.gms:google-services", version.ref = "google_services" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 
 [bundles]
@@ -28,7 +29,7 @@ core = [
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-parcelize = { id = "kotlin-parcelize" }
-googleservices-gradle = { id = "com.google.gms:google-services", version.ref = "googleservices" }
+google_services-gradle = { id = "com.google.gms:google-services", version.ref = "google_services" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 changelog = { id = "se.bjurr.gitchangelog.git-changelog-gradle-plugin", version.ref = "changelog" }

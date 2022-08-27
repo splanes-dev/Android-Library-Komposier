@@ -17,6 +17,9 @@
             <option value="$PROJECT_DIR$/component-catalog" />
             <option value="$PROJECT_DIR$/component-catalog/buttons-extension" />
             <option value="$PROJECT_DIR$/component-catalog/dialogs-extension" />
+            <option value="$PROJECT_DIR$/component-catalog/forms" />
+            <option value="$PROJECT_DIR$/component-catalog/forms/core" />
+            <option value="$PROJECT_DIR$/component-catalog/lottie-animations-extension" />
             <option value="$PROJECT_DIR$/component-catalog/snackbar" />
             <option value="$PROJECT_DIR$/ui" />
             <option value="$PROJECT_DIR$/ui/theme" />

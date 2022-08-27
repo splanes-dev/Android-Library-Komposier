@@ -49,6 +49,7 @@ android {
 
 dependencies {
 
+
     implementation(androidLibs.bundles.compose)
     implementation(androidLibs.android.lifecycle)
 

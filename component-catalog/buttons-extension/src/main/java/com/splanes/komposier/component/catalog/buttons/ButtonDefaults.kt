@@ -23,7 +23,6 @@ import com.splanes.komposier.component.catalog.buttons.ui.ButtonColors
 import com.splanes.komposier.component.catalog.buttons.ui.ButtonIcon
 import com.splanes.komposier.component.catalog.buttons.ui.ButtonSize
 import com.splanes.komposier.ui.theme.TextStyles
-import com.splanes.komposier.ui.theme.tokens.color
 import com.splanes.komposier.ui.theme.tokens.shape
 import com.splanes.komposier.ui.toolkit.resources.sp.minus
 import com.splanes.komposier.ui.toolkit.texts.capitalization.Capitalization
@@ -31,24 +30,36 @@ import androidx.compose.material3.ButtonDefaults as MaterialButtonDefaults
 
 object ButtonDefaults {
 
-    @Composable
-    internal fun ButtonTokens.buttonColors(): ButtonColors = object : ButtonColors {
+    private inline fun buttonColors(
+        crossinline icon: @Composable (Boolean) -> Color,
+        crossinline border: @Composable (Boolean) -> Color,
+        crossinline container: @Composable (Boolean) -> Color,
+        crossinline content: @Composable (Boolean) -> Color
+    ): ButtonColors = object : ButtonColors {
         @Composable
         override fun iconColor(enabled: Boolean): State<Color> =
-            rememberUpdatedState(newValue = (if (enabled) ButtonIconColor else ButtonIconDisabledColor).color())
+            rememberUpdatedState(newValue = icon(enabled))
 
         @Composable
         override fun borderColor(enabled: Boolean): State<Color> =
-            rememberUpdatedState(newValue = (if (enabled) ButtonBorderColor else ButtonBorderDisabledColor).color())
+            rememberUpdatedState(newValue = border(enabled))
 
         @Composable
         override fun containerColor(enabled: Boolean): State<Color> =
-            rememberUpdatedState(newValue = (if (enabled) ButtonContainerColor else ButtonContainerDisabledColor).color())
+            rememberUpdatedState(newValue = container(enabled))
 
         @Composable
         override fun contentColor(enabled: Boolean): State<Color> =
-            rememberUpdatedState(newValue = (if (enabled) ButtonContentColor else ButtonContentDisabledColor).color())
+            rememberUpdatedState(newValue = content(enabled))
     }
+
+    @Composable
+    internal fun ButtonTokens.buttonColors() = buttonColors(
+        icon = { enabled -> if (enabled) buttonIconColor() else buttonIconDisabledColor() },
+        border = { enabled -> if (enabled) buttonBorderColor() else buttonBorderDisabledColor() },
+        container = { enabled -> if (enabled) buttonContainerColor() else buttonContainerDisabledColor() },
+        content = { enabled -> if (enabled) buttonContentColor() else buttonContentDisabledColor() }
+    )
 
     @Composable
     internal fun ButtonTokens.buttonElevation(): ButtonElevation = MaterialButtonDefaults.buttonElevation(

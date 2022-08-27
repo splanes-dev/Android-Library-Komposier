@@ -9,8 +9,14 @@ repositories {
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:7.4.0-alpha09")
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10")
+    val baseCatalog = versionCatalogs.named("baseLibs")
+    val androidCatalog = versionCatalogs.named("androidLibs")
+
+    implementation(baseCatalog.findLibrary("kotlin-gradle").get())
+    implementation(baseCatalog.findLibrary("detekt-gradle").get())
+    implementation(baseCatalog.findLibrary("google_services-gradle").get())
+    implementation(androidCatalog.findLibrary("android-gradle").get())
+    implementation(androidCatalog.findLibrary("android-dagger-hilt-gradle").get())
 }
 
 java {

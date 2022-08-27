@@ -1,19 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
 buildscript {
-
-    repositories {
-        mavenCentral()
-        google()
-        gradlePluginPortal()
-    }
-
-    dependencies {
-        classpath("com.google.gms:google-services:4.3.13")
-        classpath("com.google.dagger:hilt-android-gradle-plugin:2.40.5")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10")
-    }
-
     onEachModule {
         androidLibs.plugins.android.run {
             when (type) {
@@ -24,6 +11,7 @@ buildscript {
         apply(provider = baseLibs.plugins.kotlin.android)
         apply(provider = baseLibs.plugins.kotlin.kapt)
         apply(provider = baseLibs.plugins.kotlin.parcelize)
+        apply(provider = baseLibs.plugins.detekt)
 
         androidConfig {
             compileSdkVersion(32)
@@ -40,14 +28,38 @@ buildscript {
             }
         }
 
+        val detekt = tasks.register<io.gitlab.arturbosch.detekt.Detekt>("custom_detekt") {
+            description = "Runs a custom detekt build."
+            setSource(files("src/main/java"))
+            config.setFrom(files("$rootDir/detekt/detekt-config.yml"))
+            jvmTarget = "11"
+            reports {
+                xml.required.set(true)
+                html.required.set(true)
+                txt.required.set(true)
+                sarif.required.set(true)
+                md.required.set(true)
+            }
+            buildUponDefaultConfig = true
+            debug = true
+            include("**/*.kt")
+            include("**/*.kts")
+            exclude("resources/")
+            exclude("build/")
+        }
+
+        tasks.named("check") {
+            dependsOn(detekt)
+        }
+
         dependencies {
             implementation(baseLibs.bundles.core)
             implementation(androidLibs.bundles.core)
-            kapt(androidLibs.hilt.compiler)
+            kapt(androidLibs.android.dagger.hilt.compiler)
             implementation(androidLibs.bundles.hilt)
 
-            testImplementation(testLibs.bundles.test.unit)
-            androidTestImplementation(testLibs.bundles.test.instrumental)
+            testImplementation(testLibs.bundles.core.unit)
+            androidTestImplementation(testLibs.bundles.core.instrumental)
         }
     }
 }

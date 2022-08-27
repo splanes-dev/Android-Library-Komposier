@@ -1,7 +1,7 @@
 @file:Suppress("UnstableApiUsage")
 
 android {
-    namespace = "com.splanes.komposier.component.catalog.dialogs_ext"
+    namespace = "com.splanes.komposier.component.catalog.dialogs"
 
     buildTypes {
         release {

@@ -1,6 +1,8 @@
 package com.splanes.komposier.component.catalog.buttons
 
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.splanes.komposier.ui.theme.tokens.ColorSchemeTokens
@@ -9,14 +11,29 @@ import com.splanes.komposier.ui.theme.tokens.typography.TypographyTokens
 
 internal abstract class ButtonTokens {
 
-    abstract val ButtonContentColor: ColorSchemeTokens
-    abstract val ButtonContentDisabledColor: ColorSchemeTokens
-    abstract val ButtonContainerColor: ColorSchemeTokens
-    abstract val ButtonContainerDisabledColor: ColorSchemeTokens
-    abstract val ButtonIconColor: ColorSchemeTokens
-    abstract val ButtonIconDisabledColor: ColorSchemeTokens
-    abstract val ButtonBorderColor: ColorSchemeTokens
-    abstract val ButtonBorderDisabledColor: ColorSchemeTokens
+    @Composable
+    abstract fun buttonContentColor(): Color
+
+    @Composable
+    abstract fun buttonContentDisabledColor(): Color
+
+    @Composable
+    abstract fun buttonContainerColor(): Color
+
+    @Composable
+    abstract fun buttonContainerDisabledColor(): Color
+
+    @Composable
+    abstract fun buttonIconColor(): Color
+
+    @Composable
+    abstract fun buttonIconDisabledColor(): Color
+
+    @Composable
+    abstract fun buttonBorderColor(): Color
+
+    @Composable
+    abstract fun buttonBorderDisabledColor(): Color
 
     abstract val ButtonShape: ShapeTokens
 

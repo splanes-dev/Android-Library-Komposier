@@ -1,23 +1,41 @@
 package com.splanes.komposier.component.catalog.buttons.outlined.tokens
 
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.splanes.komposier.component.catalog.buttons.ButtonTokens
 import com.splanes.komposier.ui.theme.tokens.ColorSchemeTokens
 import com.splanes.komposier.ui.theme.tokens.ElevationTokens
 import com.splanes.komposier.ui.theme.tokens.ShapeTokens
+import com.splanes.komposier.ui.theme.tokens.color
 
 internal object OutlinedButtonTokens : ButtonTokens() {
 
-    override val ButtonContentColor: ColorSchemeTokens by lazy { ColorSchemeTokens.Primary }
-    override val ButtonContentDisabledColor: ColorSchemeTokens by lazy { ColorSchemeTokens.OnSurface }
-    override val ButtonContainerColor: ColorSchemeTokens by lazy { ColorSchemeTokens.Surface }
-    override val ButtonContainerDisabledColor: ColorSchemeTokens by lazy { ColorSchemeTokens.Surface }
-    override val ButtonIconColor: ColorSchemeTokens by lazy { ColorSchemeTokens.Primary }
-    override val ButtonIconDisabledColor: ColorSchemeTokens by lazy { ColorSchemeTokens.OnSurface }
-    override val ButtonBorderColor: ColorSchemeTokens by lazy { ColorSchemeTokens.Primary }
-    override val ButtonBorderDisabledColor: ColorSchemeTokens by lazy { ColorSchemeTokens.OnSurface }
+    @Composable
+    override fun buttonContentColor(): Color = ColorSchemeTokens.Primary.color()
+
+    @Composable
+    override fun buttonContentDisabledColor(): Color = ColorSchemeTokens.OnSurface.color()
+
+    @Composable
+    override fun buttonContainerColor(): Color = Color.Transparent
+
+    @Composable
+    override fun buttonContainerDisabledColor(): Color = Color.Transparent
+
+    @Composable
+    override fun buttonIconColor(): Color = ColorSchemeTokens.Primary.color()
+
+    @Composable
+    override fun buttonIconDisabledColor(): Color = ColorSchemeTokens.OnSurface.color()
+
+    @Composable
+    override fun buttonBorderColor(): Color = ColorSchemeTokens.Primary.color()
+
+    @Composable
+    override fun buttonBorderDisabledColor(): Color = ColorSchemeTokens.OnSurface.color()
 
     override val ButtonShape: ShapeTokens by lazy { ShapeTokens.CornerMedium }
 
