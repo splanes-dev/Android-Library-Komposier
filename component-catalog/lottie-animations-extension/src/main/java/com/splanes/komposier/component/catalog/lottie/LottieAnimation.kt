@@ -9,11 +9,12 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.splanes.komposier.component.catalog.lottie.ui.LottieAnimationData
+import com.splanes.komposier.component.catalog.lottie.ui.LottieAnimationSpeed
 import com.splanes.komposier.component.catalog.lottie.ui.LottieCompositionIteration
 
 @Composable
 fun animateLottieRawResAsState(): LottieAnimationState {
-
+    TODO("To Implement")
 }
 
 @Composable
@@ -22,7 +23,7 @@ fun animateLottieAsState(
     iteration: LottieCompositionIteration = LottieCompositionIteration.IterateForever,
     speed: LottieAnimationSpeed = LottieAnimationSpeed.Normal
 ): LottieAnimationState {
-
+    TODO("To Implement")
 }
 
 @Composable
@@ -36,12 +37,12 @@ fun LottieAnimationData.rememberComposition() =
 @Composable
 fun LottieAnimation(data: LottieAnimationData) {
     val composition by data.rememberComposition()
-    val animState = animateLottieCompositionAsState(
+    val animState by animateLottieCompositionAsState(
         composition = composition,
         iterations = data.playbackBehavior.repeat.times
     )
 
-    animState
+    // animState
 
     LottieAnimation(
         composition = composition,

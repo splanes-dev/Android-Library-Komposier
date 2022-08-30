@@ -49,9 +49,9 @@ import com.splanes.komposier.component.catalog.snackbar.model.SnackbarUiModel
 import com.splanes.komposier.component.catalog.snackbar.tokens.SnackbarTokens
 import com.splanes.komposier.ui.theme.Paddings
 import com.splanes.komposier.ui.theme.tokens.ColorSchemeTokens
-import com.splanes.komposier.ui.theme.tokens.color
-import com.splanes.komposier.ui.theme.tokens.shape
-import com.splanes.komposier.ui.theme.tokens.typography.textStyle
+import com.splanes.komposier.ui.theme.tokens.toColor
+import com.splanes.komposier.ui.theme.tokens.toShape
+import com.splanes.komposier.ui.theme.tokens.typography.toTextStyle
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -75,7 +75,7 @@ internal fun Snackbar(data: SnackbarUiData) {
                 SnackbarContentIcon(
                     modifier = Modifier.size(SnackbarTokens.IconSize),
                     icon = leadingIcon,
-                    color = colors.icon.color(),
+                    color = colors.icon.toColor(),
                     onClick = data::leadingIconClick
                 )
             }
@@ -88,17 +88,17 @@ internal fun Snackbar(data: SnackbarUiData) {
                         start = if (leadingIcon == null) Paddings.large else 0.dp
                     ),
                 text = message,
-                color = colors.content.color(),
-                style = SnackbarTokens.ContentTextStyle.textStyle(),
+                color = colors.content.toColor(),
+                style = SnackbarTokens.ContentTextStyle.toTextStyle(),
                 textAlign = TextAlign.Justify
             )
             when {
                 actionLabel != null -> {
                     SnackbarActionButton(
                         text = actionLabel,
-                        containerColor = colors.content.color().copy(alpha = .25f),
-                        contentColor = colors.content.color(),
-                        style = SnackbarTokens.ContentTextStyle.textStyle(),
+                        containerColor = colors.content.toColor().copy(alpha = .25f),
+                        contentColor = colors.content.toColor(),
+                        style = SnackbarTokens.ContentTextStyle.toTextStyle(),
                         onClick = data::performAction
                     )
                 }
@@ -106,7 +106,7 @@ internal fun Snackbar(data: SnackbarUiData) {
                     SnackbarContentIcon(
                         modifier = Modifier.size(SnackbarTokens.IconSize),
                         icon = trailingIcon,
-                        color = colors.icon.color(),
+                        color = colors.icon.toColor(),
                         onClick = data::trailingIconClick
                     )
                 }
@@ -131,9 +131,9 @@ internal fun SnackbarScaffold(data: SnackbarUiData, snackbarContent: @Composable
             modifier = Modifier
                 .weight(1f)
                 .height(data.model.containerHeight()),
-            shape = SnackbarTokens.ContainerShape.shape(),
-            color = data.model.colors.container.color(),
-            contentColor = data.model.colors.content.color(),
+            shape = SnackbarTokens.ContainerShape.toShape(),
+            color = data.model.colors.container.toColor(),
+            contentColor = data.model.colors.content.toColor(),
         ) {
             snackbarContent(data.model)
         }
@@ -183,7 +183,7 @@ internal fun SnackbarDismissButton(visible: Boolean, onClick: () -> Unit, onTran
                 .wrapContentSize()
                 .padding(horizontal = SnackbarTokens.DismissButtonHorizontalPadding),
             onClick = onClick,
-            colors = IconButtonDefaults.iconButtonColors(contentColor = ColorSchemeTokens.OnSurface.color())
+            colors = IconButtonDefaults.iconButtonColors(contentColor = ColorSchemeTokens.OnSurface.toColor())
         ) {
             Icon(
                 modifier = Modifier.size(SnackbarTokens.DismissButtonSize),

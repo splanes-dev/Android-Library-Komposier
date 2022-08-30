@@ -6,16 +6,8 @@ import androidx.compose.ui.graphics.Color
 
 interface FormFieldColors {
     @Composable
-    fun containerColor(
-        enabled: Boolean,
-        focused: Boolean,
-        error: Boolean
-    ): State<Color>
+    fun containerColor(enabled: Boolean): State<Color>
 
     @Composable
-    fun contentColor(
-        enabled: Boolean,
-        focused: Boolean,
-        error: Boolean
-    ): State<Color>
+    fun contentColor(enabled: Boolean, error: Boolean): State<Color>
 }

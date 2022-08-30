@@ -1,7 +1,8 @@
-package com.splanes.komposier.component.catalog.dialog_ext
+package com.splanes.komposier.component.catalog.dialogs
 
-import org.junit.Assert.assertEquals
 import org.junit.Test
+
+import org.junit.Assert.*
 
 /**
  * Example local unit test, which will execute on the development machine (host).

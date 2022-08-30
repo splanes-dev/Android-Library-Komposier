@@ -22,7 +22,7 @@ enum class TypographyTokens {
 }
 
 @Composable
-fun TypographyTokens.textStyle() =
+fun TypographyTokens.toTextStyle() =
     when (this) {
         TypographyTokens.BodyLarge -> TextStyles.bodyLarge
         TypographyTokens.BodyMedium -> TextStyles.bodyMedium
@@ -40,4 +40,3 @@ fun TypographyTokens.textStyle() =
         TypographyTokens.TitleMedium -> TextStyles.titleMedium
         TypographyTokens.TitleSmall -> TextStyles.titleSmall
     }
-

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_dialog_title">Vaja…</string>
+    <string name="error_dialog_message">
+        Sembla que hi hagut un error.\n
+        Si us plau, torna a provar-ho passats uns minuts, el problema serà solventat el més aviat possible.\n
+        Disculpi les molèsties.
+    </string>
+    <string name="error_dialog_button">Entesos</string>
+</resources>

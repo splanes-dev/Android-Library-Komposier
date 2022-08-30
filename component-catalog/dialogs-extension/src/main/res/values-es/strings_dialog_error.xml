@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_dialog_title">Vaya…</string>
+    <string name="error_dialog_message">
+        Parece que algo ha salido mal.\n
+        Por favor, vuelva a intentarlo pasados un minutos, el problema será solucionado lo antes posible.\n
+        Disculpe las molestias.
+    </string>
+    <string name="error_dialog_button">Entendido</string>
+</resources>

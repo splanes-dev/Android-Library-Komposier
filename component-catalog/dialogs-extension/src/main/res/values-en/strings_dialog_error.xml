@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_dialog_title">Oops…</string>
+    <string name="error_dialog_message">
+        Seems that something went wrong.\n
+        Please try again in a few minutes, the trouble will be solved as soon as possible.\n
+        Sorry for the inconveniences.
+    </string>
+    <string name="error_dialog_button">Understood</string>
+</resources>

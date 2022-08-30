@@ -9,15 +9,15 @@ import com.splanes.komposier.component.catalog.buttons.ButtonTokens
 import com.splanes.komposier.ui.theme.tokens.ColorSchemeTokens
 import com.splanes.komposier.ui.theme.tokens.ElevationTokens
 import com.splanes.komposier.ui.theme.tokens.ShapeTokens
-import com.splanes.komposier.ui.theme.tokens.color
+import com.splanes.komposier.ui.theme.tokens.toColor
 
 internal object OutlinedButtonTokens : ButtonTokens() {
 
     @Composable
-    override fun buttonContentColor(): Color = ColorSchemeTokens.Primary.color()
+    override fun buttonContentColor(): Color = ColorSchemeTokens.Primary.toColor()
 
     @Composable
-    override fun buttonContentDisabledColor(): Color = ColorSchemeTokens.OnSurface.color()
+    override fun buttonContentDisabledColor(): Color = ColorSchemeTokens.OnSurface.toColor()
 
     @Composable
     override fun buttonContainerColor(): Color = Color.Transparent
@@ -26,16 +26,16 @@ internal object OutlinedButtonTokens : ButtonTokens() {
     override fun buttonContainerDisabledColor(): Color = Color.Transparent
 
     @Composable
-    override fun buttonIconColor(): Color = ColorSchemeTokens.Primary.color()
+    override fun buttonIconColor(): Color = ColorSchemeTokens.Primary.toColor()
 
     @Composable
-    override fun buttonIconDisabledColor(): Color = ColorSchemeTokens.OnSurface.color()
+    override fun buttonIconDisabledColor(): Color = ColorSchemeTokens.OnSurface.toColor()
 
     @Composable
-    override fun buttonBorderColor(): Color = ColorSchemeTokens.Primary.color()
+    override fun buttonBorderColor(): Color = ColorSchemeTokens.Primary.toColor()
 
     @Composable
-    override fun buttonBorderDisabledColor(): Color = ColorSchemeTokens.OnSurface.color()
+    override fun buttonBorderDisabledColor(): Color = ColorSchemeTokens.OnSurface.toColor()
 
     override val ButtonShape: ShapeTokens by lazy { ShapeTokens.CornerMedium }
 

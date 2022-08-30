@@ -46,7 +46,7 @@ enum class ColorSchemeTokens {
 }
 
 @Composable
-fun ColorSchemeTokens.color(): Color =
+fun ColorSchemeTokens.toColor(): Color =
     when (this) {
         ColorSchemeTokens.Background -> Colors.background
         ColorSchemeTokens.Error -> Colors.error

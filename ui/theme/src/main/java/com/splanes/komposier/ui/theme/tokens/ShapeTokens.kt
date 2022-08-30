@@ -20,7 +20,7 @@ enum class ShapeTokens {
 }
 
 @Composable
-fun ShapeTokens.shape() =
+fun ShapeTokens.toShape() =
     when (this) {
         ShapeTokens.CornerExtraLarge -> Shapes.extraLarge
         ShapeTokens.CornerExtraLargeTop -> Shapes.extraLarge.copy(

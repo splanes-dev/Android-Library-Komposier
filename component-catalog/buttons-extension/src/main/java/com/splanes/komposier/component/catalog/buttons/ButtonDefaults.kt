@@ -13,17 +13,17 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.splanes.komposier.component.catalog.buttons.filled.tokens.FilledButtonTokens
-import com.splanes.komposier.component.catalog.buttons.filled.ui.FilledButtonUi
+import com.splanes.komposier.component.catalog.buttons.filled.ui.FilledButtonVisuals
 import com.splanes.komposier.component.catalog.buttons.flat.tokens.FlatButtonTokens
 import com.splanes.komposier.component.catalog.buttons.icon.tokens.IconButtonTokens
 import com.splanes.komposier.component.catalog.buttons.outlined.tokens.OutlinedButtonTokens
-import com.splanes.komposier.component.catalog.buttons.outlined.ui.OutlinedButtonUi
+import com.splanes.komposier.component.catalog.buttons.outlined.ui.OutlinedButtonVisuals
 import com.splanes.komposier.component.catalog.buttons.text.tokens.TextButtonTokens
 import com.splanes.komposier.component.catalog.buttons.ui.ButtonColors
 import com.splanes.komposier.component.catalog.buttons.ui.ButtonIcon
 import com.splanes.komposier.component.catalog.buttons.ui.ButtonSize
 import com.splanes.komposier.ui.theme.TextStyles
-import com.splanes.komposier.ui.theme.tokens.shape
+import com.splanes.komposier.ui.theme.tokens.toShape
 import com.splanes.komposier.ui.toolkit.resources.sp.minus
 import com.splanes.komposier.ui.toolkit.texts.capitalization.Capitalization
 import androidx.compose.material3.ButtonDefaults as MaterialButtonDefaults
@@ -100,7 +100,7 @@ object ButtonDefaults {
 
     val FilledButtonShape: Shape
         @Composable
-        get() = FilledButtonTokens.ButtonShape.shape()
+        get() = FilledButtonTokens.ButtonShape.toShape()
 
     val OutlinedButtonElevation: ButtonElevation
         @Composable
@@ -108,7 +108,7 @@ object ButtonDefaults {
 
     val OutlinedButtonShape: Shape
         @Composable
-        get() = OutlinedButtonTokens.ButtonShape.shape()
+        get() = OutlinedButtonTokens.ButtonShape.toShape()
 
     @Composable
     fun filledButton(
@@ -118,7 +118,7 @@ object ButtonDefaults {
         capitalization: Capitalization = Capitalization.Words,
         enabled: Boolean = true,
         padding: PaddingValues = FilledButtonTokens.ButtonContentPadding
-    ): FilledButtonUi = FilledButtonUi(
+    ): FilledButtonVisuals = FilledButtonVisuals(
         text = text,
         buttonIcon = icon,
         size = size,
@@ -135,7 +135,7 @@ object ButtonDefaults {
         capitalization: Capitalization = Capitalization.Words,
         enabled: Boolean = true,
         padding: PaddingValues = OutlinedButtonTokens.ButtonContentPadding
-    ): OutlinedButtonUi = OutlinedButtonUi(
+    ): OutlinedButtonVisuals = OutlinedButtonVisuals(
         text = text,
         buttonIcon = icon,
         size = size,

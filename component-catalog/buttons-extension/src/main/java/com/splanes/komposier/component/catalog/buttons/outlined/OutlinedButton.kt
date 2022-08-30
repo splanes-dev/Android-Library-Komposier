@@ -12,14 +12,14 @@ import com.splanes.komposier.component.catalog.buttons.ButtonDefaults
 import com.splanes.komposier.component.catalog.buttons.ButtonEndSpacer
 import com.splanes.komposier.component.catalog.buttons.ButtonIcon
 import com.splanes.komposier.component.catalog.buttons.ButtonStartSpacer
-import com.splanes.komposier.component.catalog.buttons.outlined.ui.OutlinedButtonUi
+import com.splanes.komposier.component.catalog.buttons.outlined.ui.OutlinedButtonVisuals
 import com.splanes.komposier.component.catalog.buttons.ui.ButtonColors
 import com.splanes.komposier.component.catalog.buttons.ui.ButtonIcon
 import androidx.compose.material3.OutlinedButton as MaterialOutlinedButton
 
 @Composable
 fun OutlinedButton(
-    buttonUi: OutlinedButtonUi,
+    buttonUi: OutlinedButtonVisuals,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     colors: ButtonColors = ButtonDefaults.OutlinedButtonColors,
@@ -54,10 +54,16 @@ fun OutlinedButton(
                         colors = colors,
                         enabled = enabled
                     )
-                    ButtonEndSpacer(padding = buttonIcon.horizontalPadding, offset = buttonIcon.size)
+                    ButtonEndSpacer(
+                        padding = buttonIcon.horizontalPadding,
+                        offset = buttonIcon.size
+                    )
                 }
                 buttonIcon != null && buttonIcon.position == ButtonIcon.RelativePosition.Trailing -> {
-                    ButtonStartSpacer(padding = buttonIcon.horizontalPadding, offset = buttonIcon.size)
+                    ButtonStartSpacer(
+                        padding = buttonIcon.horizontalPadding,
+                        offset = buttonIcon.size
+                    )
                     ButtonContentText(
                         text = text,
                         capitalization = capitalization,

@@ -5,11 +5,8 @@ import kotlinx.coroutines.CoroutineScope
 
 class FormState(
     val scope: CoroutineScope,
-    val fields: List<FormFieldState>,
-    val rules: List<FormFieldBehavior>
+    val fields: List<FormFieldState<Any>>, // FIXME: Improve on future iterations
+    val rules: List<Any> = emptyList() // FIXME: Improve on future iterations
 ) {
 
-	suspend fun trySubmit() {
-
-	}
 }

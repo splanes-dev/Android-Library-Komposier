@@ -13,13 +13,13 @@ import com.splanes.komposier.component.catalog.buttons.ButtonDefaults
 import com.splanes.komposier.component.catalog.buttons.ButtonEndSpacer
 import com.splanes.komposier.component.catalog.buttons.ButtonIcon
 import com.splanes.komposier.component.catalog.buttons.ButtonStartSpacer
-import com.splanes.komposier.component.catalog.buttons.filled.ui.FilledButtonUi
+import com.splanes.komposier.component.catalog.buttons.filled.ui.FilledButtonVisuals
 import com.splanes.komposier.component.catalog.buttons.ui.ButtonColors
 import com.splanes.komposier.component.catalog.buttons.ui.ButtonIcon
 
 @Composable
 fun FilledButton(
-    buttonUi: FilledButtonUi,
+    buttonUi: FilledButtonVisuals,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     colors: ButtonColors = ButtonDefaults.FilledButtonColors,
